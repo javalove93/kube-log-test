@@ -15,3 +15,5 @@ spec:
       containers:
         - name: spring-app
           image: gcr.io/api-project-249965614499/spring-app
+      nodeSelector:
+        disk: "ssd"
