@@ -15,5 +15,12 @@ spec:
       containers:
         - name: spring-app
           image: gcr.io/api-project-249965614499/spring-app
+          volumeMounts:
+            - name: log-storage
+              mountPath: /mnt
+      volumes:
+        - name: log-storage
+          persistentVolumeClaim:
+            claimName: log-storage
       nodeSelector:
         disk: "ssd"
