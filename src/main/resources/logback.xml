@@ -44,7 +44,7 @@
                   com.victolee.logExample 아래 패키지 로그들만 fileAppender 방법으로 로그를 남긴다.
                   물론 <appender-ref ref="consoleAppender" />를 추가하여 콘솔로도 로그를 남길 수 있다.         
          -->
-         <logger name="com.victolee.logExample"  level="info" additivity="false">
+         <logger name="com.google.sample.HelloWorldController"  level="info" additivity="false">
             <appender-ref ref="fileAppender" />
          </logger>
 
