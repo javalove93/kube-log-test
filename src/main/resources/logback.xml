@@ -40,10 +40,18 @@
                   </rollingPolicy>
          </appender>
 
-         <!--
-                  com.victolee.logExample 아래 패키지 로그들만 fileAppender 방법으로 로그를 남긴다.
-                  물론 <appender-ref ref="consoleAppender" />를 추가하여 콘솔로도 로그를 남길 수 있다.         
-         -->
+		<!-- syslog UDP -->
+	    <appender name="syslogAppender" class="ch.qos.logback.classic.net.SyslogAppender">
+	        <syslogHost>192.168.25.15</syslogHost>
+	        <facility>SYSLOG</facility>
+	        <port>514</port>
+	        <suffixPattern>java %d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n</suffixPattern>
+	    </appender>
+
+         <logger name="com.google.sample.SyslogController"  level="info" additivity="false">
+            <appender-ref ref="syslogAppender" />
+         </logger>
+
          <logger name="com.google.sample.HelloWorldController"  level="info" additivity="false">
             <appender-ref ref="fileAppender" />
          </logger>
