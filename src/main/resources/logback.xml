@@ -48,6 +48,24 @@
 	        <suffixPattern>java %d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n</suffixPattern>
 	    </appender>
 
+		<!-- Redis -->
+		  <appender name="LOGSTASH" class="com.cwbase.logback.RedisAppender">
+		    <source>mySource</source>
+		    <sourcePath>mySourcePath</sourcePath>
+		    <type>myApplication</type>
+		    <tags>production</tags>
+		    <host>192.168.56.10</host>
+		    <port>6379</port>
+		    <key>logstash</key>
+		  </appender>
+		  <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+		    <appender-ref ref="LOGSTASH" />
+		  </appender>
+
+         <logger name="com.google.sample.RedisController"  level="info" additivity="false">
+            <appender-ref ref="ASYNC" />
+         </logger>
+
          <logger name="com.google.sample.SyslogController"  level="info" additivity="false">
             <appender-ref ref="syslogAppender" />
          </logger>
