@@ -1,6 +1,6 @@
 # kube-log-test
 
-Google Kubernetes Engine + Java Spring Test
+Google Kubernetes Engine + Java Spring + Logging performance test
 
 ## Docker build and test
 
@@ -42,6 +42,16 @@ $ kubectl create -f disk.yaml
 $ kubectl create -f deployment.yaml
 ~~~
 
+---
+# Logging performance test
+
+## Performance test for file logging adn syslog udp logging
+~~~
+$ curl http://<svc ip>:8888/sample/file
+Elapsed: OOOOO
+$ curl http://<svc ip>:8888/syslog/udp
+Elapsed: OOOOO
+~~~
 
 
 
