@@ -8,18 +8,18 @@ steps:
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ['apply', '-f', 'service.yaml']
   env:
-  - 'CLOUDSDK_COMPUTE_ZONE=asia-east1'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=ha-cluster-2'
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-c'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=spinnaker-test-1'
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ['apply', '-f', 'deployment.yaml']
   env:
-  - 'CLOUDSDK_COMPUTE_ZONE=asia-east1'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=ha-cluster-2'
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-c'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=spinnaker-test-1'
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ['set', 'image', 'deployment/spring-app-deployment', 'spring-app=gcr.io/$PROJECT_ID/spring-app']
   env:
-  - 'CLOUDSDK_COMPUTE_ZONE=asia-east1'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=ha-cluster-2'
+  - 'CLOUDSDK_COMPUTE_ZONE=asia-east1-c'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=spinnaker-test-1'
 images:
 - 'gcr.io/$PROJECT_ID/spring-app'
 
